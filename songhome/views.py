@@ -1,8 +1,8 @@
 from django.shortcuts import render
 import datetime
 from rest_framework import viewsets, filters
-from .models import Song, Comment, Writer, Tag
-from .serializers import SongSerializer, CommentSerializer, WriterSerializer, TagSerializer
+from .models import Song, Comment, Writer, Tag, Genre
+from .serializers import SongSerializer, CommentSerializer, WriterSerializer, TagSerializer, GenreSerializer
 
 # Create your views here.
 
@@ -11,6 +11,14 @@ class SongViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     queryset = Song.objects.all()
     serializer_class = SongSerializer
+
+    
+    # def retrieve(self,request,pk=None): 
+    #     queryset = Song.objects.filter(pk=pk)
+    #     if not queryset: 
+    #         return Response(status=status.HTTP_400_BAD_REQUEST)
+    #     else: 
+    #         serializer = SongSerializer(queryset)
 
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
@@ -25,3 +33,9 @@ class TagViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
+
+class GenreViewSet(viewsets.ModelViewSet):
+    search_fields = ['name']
+    filter_backends = (filters.SearchFilter,)
+    queryset = Genre.objects.all()
+    serializer_class = GenreSerializer
