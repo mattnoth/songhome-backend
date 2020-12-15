@@ -12,14 +12,6 @@ class SongViewSet(viewsets.ModelViewSet):
     queryset = Song.objects.all()
     serializer_class = SongSerializer
 
-    
-    # def retrieve(self,request,pk=None): 
-    #     queryset = Song.objects.filter(pk=pk)
-    #     if not queryset: 
-    #         return Response(status=status.HTTP_400_BAD_REQUEST)
-    #     else: 
-    #         serializer = SongSerializer(queryset)
-
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
