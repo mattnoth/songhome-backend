@@ -16,6 +16,7 @@ class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
+
 class WriterViewSet(viewsets.ModelViewSet):
     queryset = Writer.objects.all()
     serializer_class = WriterSerializer

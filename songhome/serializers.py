@@ -3,19 +3,19 @@ from .models import Song, Comment, Writer, Tag, Genre
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    song_name = serializers.ReadOnlyField(source='song.name', read_only=True)
+    # song = serializers.ReadOnlyField(source='song.id', read_only=True)
 
     class Meta:
         model = Comment
-        fields = ('id', 'text', 'created', 'song_name')
+        fields = ('id', 'text', 'created', 'song')
 
 
 class WriterSerializer(serializers.ModelSerializer):
-    song_name = serializers.ReadOnlyField(source='song.name', read_only=True)
+    # song_name = serializers.ReadOnlyField(source='song.name', read_only=True)
 
     class Meta:
         model = Writer
-        fields = ('id', 'name', 'pub_percent', 'song_name')
+        fields = ('id', 'name', 'pub_percent', 'song')
 
 
 class SongLimitedSerializer(serializers.ModelSerializer):
@@ -26,14 +26,15 @@ class SongLimitedSerializer(serializers.ModelSerializer):
 
 
 class TagSerializer(serializers.ModelSerializer):
-    song = SongLimitedSerializer(many=False, read_only=True)
+    song = SongLimitedSerializer(many=False)
 
     class Meta:
         model = Tag
         fields = ('id', 'name', 'song')
 
+
 class GenreSerializer(serializers.ModelSerializer):
-    song = SongLimitedSerializer(many=False, read_only=True)
+    # song = SongLimitedSerializer(many=False, read_only=True)
 
     class Meta:
         model = Genre
@@ -48,4 +49,5 @@ class SongSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Song
-        fields = ('id', 'name', 'slug', 'image', 'file', 'created', 'release_date', 'isrc_code', 'bpm', 'status', 'key', 'lyrics', 'comments', 'writers', 'tags', 'genres')
+        fields = ('id', 'name', 'slug', 'image', 'file', 'created', 'release_date', 'isrc_code',
+                  'bpm', 'status', 'key', 'lyrics', 'comments', 'writers', 'tags', 'genres')

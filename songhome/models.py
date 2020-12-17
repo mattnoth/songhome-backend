@@ -8,7 +8,7 @@ class Song(models.Model):
     name = models.CharField(max_length=40)
     slug = models.CharField(max_length=50, blank=True, null=True)
     image = models.ImageField(upload_to='media/images/', default='media/images/default.jpg')
-    file = models.FileField(upload_to='media/audio/', default='default.mp3')
+    file = models.FileField(upload_to='media/audio/', default='media/audio/default.mp3')
     created = models.DateTimeField(auto_now_add=True)
     release_date = models.DateField(null=True, blank=True)
     isrc_code = models.IntegerField(blank=True, null=True)
