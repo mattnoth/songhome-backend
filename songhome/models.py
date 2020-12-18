@@ -24,6 +24,7 @@ class Comment(models.Model):
     song = models.ForeignKey(Song, on_delete=models.CASCADE, related_name='comments')
     text = models.CharField(max_length=500)
     created = models.DateTimeField(auto_now_add=True)
+    status = models.BooleanField(null=True)
     related_position = models.IntegerField(null=True, blank=True)
 
 class Writer(models.Model):

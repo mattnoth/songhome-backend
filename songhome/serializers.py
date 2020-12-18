@@ -7,7 +7,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ('id', 'text', 'created', 'song')
+        fields = ('id', 'song', 'status', 'text', 'created',)
 
 
 class WriterSerializer(serializers.ModelSerializer):
@@ -22,11 +22,11 @@ class SongLimitedSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Song
-        fields = ('id', 'name', 'slug', 'bpm', 'status')
+        fields = ('id', 'name', 'status')
 
 
 class TagSerializer(serializers.ModelSerializer):
-    song = SongLimitedSerializer(many=False)
+    song = SongLimitedSerializer(many=False, read_only=True)
 
     class Meta:
         model = Tag
@@ -49,5 +49,12 @@ class SongSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Song
-        fields = ('id', 'name', 'slug', 'image', 'file', 'created', 'release_date', 'isrc_code',
-                  'bpm', 'status', 'key', 'lyrics', 'comments', 'writers', 'tags', 'genres')
+        fields = ('id', 'name', 'slug', 'image', 'file', 'created', 'release_date', 'isrc_code', 'bpm', 'status', 'key', 'lyrics', 'comments', 'writers', 'tags', 'genres')
+    
+    def create(self, data):
+        
+        song = Song.objects.create(**data)
+        print(data)
+        print(song)
+
+        return song
