@@ -5,6 +5,9 @@ Beatbay Alpha is the first version of a song specific task management web applic
 
 In order to use, one must assign their own S3 buckets and database in the backend repo. 
 
+Front end repo - https://github.com/mattnoth/songhome-fe
+Backend Deployed - https://blooming-earth-00957.herokuapp.com/
+Frontend Deployed - https://vast-dusk-53244.herokuapp.com/
 ## User Stories 
 
 As with any application, there are infinite ideas, with constrained time. Originally had planned for many more features to be built within the MVP which slowly got trimmed down. There are still many features I would like to implement, including user authentication so anyone can use it without connecting their own database. 
