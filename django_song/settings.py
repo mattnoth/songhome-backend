@@ -83,8 +83,19 @@ WSGI_APPLICATION = 'django_song.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': dj_database_url.config(conn_max_age=600)
+# }
+
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600)
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'songhome-django-23',
+       'USER': 'postgres',
+       'PASSWORD': os.environ["DBPW"],
+       'HOST': '',
+       'PORT': '5432',
+   }
 }
 
 
